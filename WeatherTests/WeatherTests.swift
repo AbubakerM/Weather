@@ -15,6 +15,13 @@ class WeatherTests: XCTestCase {
         XCTAssertTrue(Constants.API.Key == key, "API key is changed")
     }
     
+    func testWeatherListParameters() {
+        let params = mockParameters()
+        XCTAssertNotNil(params["lat"])
+        XCTAssertNotNil(params["lon"])
+        XCTAssertNotNil(params["appid"])
+    }
+    
     func testWeatherList() {
         let expectation = self.expectation(description: "Wait to load weather list")
         let params = mockParameters()

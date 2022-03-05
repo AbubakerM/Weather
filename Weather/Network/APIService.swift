@@ -26,7 +26,7 @@ class APIService: Service {
             if let error = error {
                 completion(.failure(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
-                print(response.description)
+                print("🚧🚧",response.description,"🚧🚧")
                 completion(.success((data,response)))
             }
         }.resume()

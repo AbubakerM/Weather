@@ -7,8 +7,6 @@
 
 import Foundation
 
-typealias MappingResult<T> = Swift.Result<T, Error>
-
 final class APIModelsMapper {
         
     static func map<T: Decodable>(_ data: Data) -> T? {
