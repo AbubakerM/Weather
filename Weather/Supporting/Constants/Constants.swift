@@ -7,4 +7,15 @@
 
 import Foundation
 
-struct Constants {}
+struct Constants {
+    
+}
+
+extension Constants {
+    enum API {
+        static let Scheme: String = "https"
+        static let BaseURL: String = "api.openweathermap.org"
+        static let kTimeOutInterval = TimeInterval(5)
+        static let Key: String = "e887e6e863e03c3868e2c96a90db90be"
+    }
+}
