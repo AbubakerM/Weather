@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeatherViewModel {
+class HomeCellViewModel {
     var date: String?
     var minTemp: String?
     var maxTemp: String?
@@ -32,19 +32,44 @@ class WeatherViewModel {
     
 }
 
-class WeatherListViewModel {
-    var timeZone: String
-    var forecast: [WeatherViewModel]
+class HomeViewModel {
     
-    init(listObject: WeatherList) {
+    var timeZone = ""
+    var list = [HomeCellViewModel]() {
+        didSet {
+            reload?()
+        }
+    }
+    
+    var reload: (() -> Void)?
+    
+    private func setData(listObject: WeatherList) {
         timeZone = listObject.timezone ?? ""
         
-        var forecast = [WeatherViewModel]()
+        var forecast = [HomeCellViewModel]()
         listObject.daily.forEach({ daily in
-            let viewModel = WeatherViewModel(object: daily)
+            let viewModel = HomeCellViewModel(object: daily)
             forecast.append(viewModel)
         })
-        self.forecast = forecast
+        self.list = forecast
+    }
+    
+    func getWeatherList() {
+        let params = [
+            "lat":"25.191116",
+            "lon":"55.272355",
+            "appid": Constants.API.Key
+        ]
+        
+        let endpoint = APIEndPoint(path: .onecall, method: .get, parameters: params)
+                
+        let service = WeatherService(endPoint: endpoint)
+        service.getWeatherList { [weak self] weatherList in
+            guard let self = self else { return }
+            if let list = weatherList {
+                self.setData(listObject: list)
+            }
+        }
     }
     
 }

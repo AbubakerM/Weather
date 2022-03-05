@@ -7,8 +7,11 @@
 
 import Foundation
 
+protocol WeatherServiceProtocol {
+    func getWeatherList(completion: @escaping (WeatherList?) -> Void)
+}
 
-class WeatherService {
+class WeatherService: WeatherServiceProtocol {
     
     private let service: APIService
     private var endPoint: APIEndPoint
@@ -18,7 +21,7 @@ class WeatherService {
         self.endPoint = endPoint
     }
     
-    func updateList(completion: @escaping (WeatherList?) -> Void) {
+    func getWeatherList(completion: @escaping (WeatherList?) -> Void) {
         
         service.request(endPoint.httpRequest) { result in
             switch result {
@@ -30,7 +33,6 @@ class WeatherService {
                 }
                 
                 completion(weatherList)
-                
             
             }
         }
