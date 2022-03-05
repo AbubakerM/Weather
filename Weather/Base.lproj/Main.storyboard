@@ -39,6 +39,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IWQ-Iy-XkR">
+                        <barButtonItem key="backBarButtonItem" title=" " id="JNA-GC-IXh"/>
                         <barButtonItem key="rightBarButtonItem" title="⚙️" id="j8w-Ji-Mao">
                             <connections>
                                 <action selector="settingsClicked:" destination="BYZ-38-t0r" id="QDr-pX-asR"/>
@@ -117,9 +118,33 @@
                     <view key="view" contentMode="scaleToFill" id="A4g-aU-QAe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MDf-T8-kNn">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uNz-ni-r0n">
+                                        <rect key="frame" x="8" y="0.0" width="398" height="818"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <sections/>
+                                    </tableView>
+                                </subviews>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="8" bottom="0.0" trailing="8"/>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="lLO-gi-xaB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lLO-gi-xaB" firstAttribute="bottom" secondItem="MDf-T8-kNn" secondAttribute="bottom" id="Jq2-a3-FNh"/>
+                            <constraint firstItem="MDf-T8-kNn" firstAttribute="top" secondItem="lLO-gi-xaB" secondAttribute="top" id="QPW-c8-22C"/>
+                            <constraint firstItem="lLO-gi-xaB" firstAttribute="trailing" secondItem="MDf-T8-kNn" secondAttribute="trailing" id="eDH-XK-R34"/>
+                            <constraint firstItem="MDf-T8-kNn" firstAttribute="leading" secondItem="lLO-gi-xaB" secondAttribute="leading" id="xt9-8u-RYK"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="uNz-ni-r0n" id="XjP-HT-ZzE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1i-mU-v45" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -133,6 +158,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wUZ-4N-DFE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>

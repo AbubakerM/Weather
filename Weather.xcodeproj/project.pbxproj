@@ -11,6 +11,10 @@
 		7D4FC07A27D3D0E800858331 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FC07927D3D0E800858331 /* AppSettings.swift */; };
 		7D4FC07E27D3DABA00858331 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FC07D27D3DABA00858331 /* SettingsVC.swift */; };
 		7D4FC08027D3EDC700858331 /* Constants+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FC07F27D3EDC700858331 /* Constants+Notifications.swift */; };
+		7D4FC08727D3F50A00858331 /* DetailsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FC08627D3F50A00858331 /* DetailsCellViewModel.swift */; };
+		7D4FC08B27D3FB5100858331 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FC08927D3FB5100858331 /* DetailsCell.swift */; };
+		7D4FC08C27D3FB5100858331 /* DetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D4FC08A27D3FB5100858331 /* DetailsCell.xib */; };
+		7D4FC08E27D3FFD100858331 /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FC08D27D3FFD100858331 /* HomeCellViewModel.swift */; };
 		81178E6127D3917400CD149C /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81178E5F27D3917400CD149C /* HomeCell.swift */; };
 		81178E6227D3917400CD149C /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81178E6027D3917400CD149C /* HomeCell.xib */; };
 		81178E6427D391B700CD149C /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81178E6327D391B700CD149C /* UITableView+Extensions.swift */; };
@@ -57,6 +61,10 @@
 		7D4FC07927D3D0E800858331 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		7D4FC07D27D3DABA00858331 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		7D4FC07F27D3EDC700858331 /* Constants+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Notifications.swift"; sourceTree = "<group>"; };
+		7D4FC08627D3F50A00858331 /* DetailsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCellViewModel.swift; sourceTree = "<group>"; };
+		7D4FC08927D3FB5100858331 /* DetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
+		7D4FC08A27D3FB5100858331 /* DetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsCell.xib; sourceTree = "<group>"; };
+		7D4FC08D27D3FFD100858331 /* HomeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModel.swift; sourceTree = "<group>"; };
 		81178E5F27D3917400CD149C /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		81178E6027D3917400CD149C /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 		81178E6327D391B700CD149C /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
@@ -126,6 +134,15 @@
 			path = SettingsVC;
 			sourceTree = "<group>";
 		};
+		7D4FC08827D3FB4B00858331 /* DetailsCell */ = {
+			isa = PBXGroup;
+			children = (
+				7D4FC08927D3FB5100858331 /* DetailsCell.swift */,
+				7D4FC08A27D3FB5100858331 /* DetailsCell.xib */,
+			);
+			path = DetailsCell;
+			sourceTree = "<group>";
+		};
 		81178E5E27D3914D00CD149C /* HomeCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				81178E6627D3925400CD149C /* HomeViewModel.swift */,
+				7D4FC08D27D3FFD100858331 /* HomeCellViewModel.swift */,
+				7D4FC08627D3F50A00858331 /* DetailsCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -209,8 +228,8 @@
 		81C1EC3D27D370CB0099B02A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				81C1EC4227D3711F0099B02A /* DetailsVC */,
 				81C1EC4127D3711A0099B02A /* HomeVC */,
+				81C1EC4227D3711F0099B02A /* DetailsVC */,
 				7D4FC07C27D3DA8A00858331 /* SettingsVC */,
 			);
 			path = Controller;
@@ -250,6 +269,7 @@
 		81C1EC4227D3711F0099B02A /* DetailsVC */ = {
 			isa = PBXGroup;
 			children = (
+				7D4FC08827D3FB4B00858331 /* DetailsCell */,
 				81C1EC4527D371420099B02A /* DetailsVC.swift */,
 			);
 			path = DetailsVC;
@@ -389,6 +409,7 @@
 				81C1EC1927D36FE80099B02A /* LaunchScreen.storyboard in Resources */,
 				81C1EC1627D36FE80099B02A /* Assets.xcassets in Resources */,
 				81178E6227D3917400CD149C /* HomeCell.xib in Resources */,
+				7D4FC08C27D3FB5100858331 /* DetailsCell.xib in Resources */,
 				81C1EC1427D36FE50099B02A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,8 +435,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D4FC08B27D3FB5100858331 /* DetailsCell.swift in Sources */,
 				81C1EC5627D377CB0099B02A /* WeatherService.swift in Sources */,
 				81178E6427D391B700CD149C /* UITableView+Extensions.swift in Sources */,
+				7D4FC08E27D3FFD100858331 /* HomeCellViewModel.swift in Sources */,
 				7D4FC08027D3EDC700858331 /* Constants+Notifications.swift in Sources */,
 				81C1EC5827D378030099B02A /* WeatherList.swift in Sources */,
 				81C1EC4827D371A10099B02A /* Constants.swift in Sources */,
@@ -428,6 +451,7 @@
 				81C1EC0F27D36FE50099B02A /* SceneDelegate.swift in Sources */,
 				81C1EC4B27D372370099B02A /* APIService.swift in Sources */,
 				81178E6727D3925400CD149C /* HomeViewModel.swift in Sources */,
+				7D4FC08727D3F50A00858331 /* DetailsCellViewModel.swift in Sources */,
 				81C1EC4F27D3729F0099B02A /* APIEndPoint.swift in Sources */,
 				81C1EC5127D374AD0099B02A /* Constants+API.swift in Sources */,
 				81C1EC5B27D381870099B02A /* Dictionary+Extensions.swift in Sources */,
@@ -617,7 +641,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -647,7 +671,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

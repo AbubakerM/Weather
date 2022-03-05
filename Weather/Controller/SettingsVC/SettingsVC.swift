@@ -11,7 +11,7 @@ protocol SettingsProtocol: AnyObject {
     func settingsChanged()
 }
 
-class SettingsVC: UIViewController {
+class SettingsVC: UIViewController, ViewConfiguration {
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
@@ -20,10 +20,16 @@ class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initView()
+        
         setSegmentControl()
         
     }
 
+    func initView() {
+        title = "Settings"
+    }
+    
     @IBAction func indexChanged(_ sender: Any) {
         switch segmentControl.selectedSegmentIndex
         {

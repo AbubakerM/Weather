@@ -7,23 +7,40 @@
 
 import UIKit
 
-class DetailsVC: UIViewController {
+class DetailsVC: UIViewController, ViewConfiguration {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var viewModelList = [DetailsCellViewModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        initView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func initView() {
+        title = "Info"
+        
+        tableView.registerNib(DetailsCell.identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-    */
 
+}
+
+extension DetailsVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModelList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailsCell.identifier, for: indexPath) as? DetailsCell else {
+            return UITableViewCell()
+        }
+        
+        cell.setup(object: viewModelList[indexPath.row])
+        
+        return cell
+    }
 }

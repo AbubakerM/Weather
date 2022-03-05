@@ -7,7 +7,11 @@
 
 import UIKit
 
-class HomeVC: UIViewController {
+protocol ViewConfiguration {
+    func initView()
+}
+
+class HomeVC: UIViewController, ViewConfiguration {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -37,16 +41,16 @@ class HomeVC: UIViewController {
         // Reload TableView closure
         viewModel.reload = { [weak self] in
             DispatchQueue.main.async {
-                self?.title = self?.viewModel.timeZone
+                self?.title = self?.viewModel.object?.timezone
                 self?.tableView.reloadData()
             }
         }
     }
     
     @IBAction func settingsClicked(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as? SettingsVC else { return }
         vc.delegate = self
-        present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -70,5 +74,11 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         cell.initialize(viewModel.list[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsVC else { return }
+        vc.viewModelList = viewModel.getDetailsList(indexPath.row)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
