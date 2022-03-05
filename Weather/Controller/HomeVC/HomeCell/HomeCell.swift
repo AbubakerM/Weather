@@ -14,4 +14,8 @@ class HomeCell: UITableViewCell {
 
     }
     
+    func initialize(_ object: HomeCellViewModel) {
+        
+    }
+    
 }
