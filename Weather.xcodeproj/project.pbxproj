@@ -10,6 +10,7 @@
 		7D4FC07827D3D06B00858331 /* Constants+Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FC07727D3D06B00858331 /* Constants+Unit.swift */; };
 		7D4FC07A27D3D0E800858331 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FC07927D3D0E800858331 /* AppSettings.swift */; };
 		7D4FC07E27D3DABA00858331 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FC07D27D3DABA00858331 /* SettingsVC.swift */; };
+		7D4FC08027D3EDC700858331 /* Constants+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FC07F27D3EDC700858331 /* Constants+Notifications.swift */; };
 		81178E6127D3917400CD149C /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81178E5F27D3917400CD149C /* HomeCell.swift */; };
 		81178E6227D3917400CD149C /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81178E6027D3917400CD149C /* HomeCell.xib */; };
 		81178E6427D391B700CD149C /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81178E6327D391B700CD149C /* UITableView+Extensions.swift */; };
@@ -55,6 +56,7 @@
 		7D4FC07727D3D06B00858331 /* Constants+Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Unit.swift"; sourceTree = "<group>"; };
 		7D4FC07927D3D0E800858331 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		7D4FC07D27D3DABA00858331 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		7D4FC07F27D3EDC700858331 /* Constants+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Notifications.swift"; sourceTree = "<group>"; };
 		81178E5F27D3917400CD149C /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		81178E6027D3917400CD149C /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 		81178E6327D391B700CD149C /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				81C1EC4727D371A10099B02A /* Constants.swift */,
 				81C1EC5027D374AD0099B02A /* Constants+API.swift */,
 				7D4FC07727D3D06B00858331 /* Constants+Unit.swift */,
+				7D4FC07F27D3EDC700858331 /* Constants+Notifications.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			files = (
 				81C1EC5627D377CB0099B02A /* WeatherService.swift in Sources */,
 				81178E6427D391B700CD149C /* UITableView+Extensions.swift in Sources */,
+				7D4FC08027D3EDC700858331 /* Constants+Notifications.swift in Sources */,
 				81C1EC5827D378030099B02A /* WeatherList.swift in Sources */,
 				81C1EC4827D371A10099B02A /* Constants.swift in Sources */,
 				81C1EC4D27D3725F0099B02A /* APIModelsMapper.swift in Sources */,

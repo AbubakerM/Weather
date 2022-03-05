@@ -54,6 +54,9 @@ class HomeCellViewModel {
 class HomeViewModel {
     
     var timeZone = ""
+    
+    var object: WeatherList?
+    
     var list = [HomeCellViewModel]() {
         didSet {
             reload?()
@@ -63,14 +66,23 @@ class HomeViewModel {
     var reload: (() -> Void)?
     
     private func setData(listObject: WeatherList) {
+        object = listObject
         timeZone = listObject.timezone ?? ""
-        
+        reloadViewModels()
+    }
+    
+    func reloadViewModels() {
         var forecast = [HomeCellViewModel]()
-        listObject.daily.forEach({ daily in
-            let viewModel = HomeCellViewModel(object: daily)
-            forecast.append(viewModel)
-        })
-        self.list = forecast
+        
+        if let object = object {
+            object.daily.forEach({ daily in
+                let viewModel = HomeCellViewModel(object: daily)
+                forecast.append(viewModel)
+            })
+            self.list.removeAll()
+            self.list = forecast
+        }
+        
     }
     
     func getWeatherList() {

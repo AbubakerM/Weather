@@ -37,6 +37,7 @@ class HomeVC: UIViewController {
         // Reload TableView closure
         viewModel.reload = { [weak self] in
             DispatchQueue.main.async {
+                self?.title = self?.viewModel.timeZone
                 self?.tableView.reloadData()
             }
         }
@@ -44,7 +45,14 @@ class HomeVC: UIViewController {
     
     @IBAction func settingsClicked(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
+        vc.delegate = self
         present(vc, animated: true, completion: nil)
+    }
+}
+
+extension HomeVC: SettingsProtocol {
+    func settingsChanged() {
+        viewModel.reloadViewModels()
     }
 }
 

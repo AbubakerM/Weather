@@ -7,14 +7,20 @@
 
 import UIKit
 
+protocol SettingsProtocol: AnyObject {
+    func settingsChanged()
+}
+
 class SettingsVC: UIViewController {
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
+    weak var delegate: SettingsProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateTempSettings(AppSettings.shared.temperatureUnit)
+        setSegmentControl()
         
     }
 
@@ -32,13 +38,12 @@ class SettingsVC: UIViewController {
     
     func updateTempSettings(_ unit: Constants.Units) {
         AppSettings.shared.temperatureUnit = unit
-        
-        switch unit {
-        case .Celsius:
-            segmentControl.selectedSegmentIndex = 1
-        case .Fahrenheit:
-            segmentControl.selectedSegmentIndex = 0
-        }
+        setSegmentControl()
+        delegate?.settingsChanged()
+    }
+    
+    func setSegmentControl() {
+        segmentControl.selectedSegmentIndex = AppSettings.shared.temperatureUnit == .Fahrenheit ? 0 : 1
     }
     
 }
