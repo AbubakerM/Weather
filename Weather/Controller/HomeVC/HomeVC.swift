@@ -13,6 +13,10 @@ protocol ViewConfiguration {
 
 class HomeVC: UIViewController, ViewConfiguration {
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     lazy var viewModel = {
@@ -32,6 +36,12 @@ class HomeVC: UIViewController, ViewConfiguration {
         tableView.registerNib(HomeCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(locationAuthChanged), name: .LocationAuthorizationUpdated, object: nil)
+    }
+    
+    @objc func locationAuthChanged() {
+        viewModel.getWeatherList()
     }
     
     func initViewModel() {

@@ -8,6 +8,6 @@
 import Foundation
 
 extension NSNotification.Name {
-    static let SettingsChanged = Notification.Name("SettingsChanged")
+    static let LocationAuthorizationUpdated = Notification.Name("LocationAuthorizationUpdated")
 }
 

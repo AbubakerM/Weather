@@ -48,9 +48,16 @@ class HomeViewModel {
     }
     
     func getWeatherList() {
+        guard
+            let lat = LocationManager.shared.getCurrentLocation()?.latitude.description ,
+            let lon = LocationManager.shared.getCurrentLocation()?.longitude.description
+        else {
+            LocationManager.shared.askLocationAutorization()
+            return }
+        
         let params = [
-            "lat":"25.191116",
-            "lon":"55.272355",
+            "lat":lat,
+            "lon":lon,
             "appid": Constants.API.Key
         ]
         
