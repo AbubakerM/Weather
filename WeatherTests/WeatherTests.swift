@@ -28,7 +28,7 @@ class WeatherTests: XCTestCase {
         let endpoint = APIEndPoint(path: .onecall, method: .get, parameters: params)
                 
         let service = WeatherService(endPoint: endpoint)
-        service.updateList { weatherList in
+        service.getWeatherList { weatherList in
             print("mapped Successfully")
             XCTAssertNotNil(weatherList, "weather list = nil")
             expectation.fulfill()

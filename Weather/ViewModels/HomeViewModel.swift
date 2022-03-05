@@ -9,6 +9,7 @@ import Foundation
 
 class HomeCellViewModel {
     var date: String?
+    var temp: String?
     var minTemp: String?
     var maxTemp: String?
     var windSpeed: String?
@@ -16,8 +17,9 @@ class HomeCellViewModel {
     
     init(object: Daily) {
         date = getStringDate(object.dt ?? 0)
-        minTemp = String(format: "%.2f", object.temp.min ?? 0)
-        maxTemp = String(format: "%.2f", object.temp.max ?? 0)
+        
+        setMinMaxTemp(max: object.temp.max, min: object.temp.min)
+        
         windSpeed = String(format: "%.2f", object.windSpeed ?? 0)
         humidity = String(object.humidity ?? 0)
     }
@@ -25,9 +27,26 @@ class HomeCellViewModel {
     private func getStringDate(_ milliseconds: Int) -> String {
         let d = Date(timeIntervalSince1970: TimeInterval(milliseconds))
         let df = DateFormatter()
+        df.locale = Locale(identifier: "en")
         df.dateFormat = "y-MM-dd"
         
         return df.string(from: d)
+    }
+    
+    private func setMinMaxTemp(max: Double?, min: Double?) {
+        minTemp = calculateMinTemp(min ?? 0)
+        maxTemp = calculateMaxTemp(max ?? 0)
+        temp = (maxTemp ?? "") + " / " + (minTemp ?? "") + " " + AppSettings.shared.temperatureUnit.rawValue
+    }
+    
+    private func calculateMinTemp(_ temp: Double) -> String {
+        let temp = AppSettings.shared.getTemperature(temp)
+        return String(format: "%.0f", temp)
+    }
+    
+    private func calculateMaxTemp(_ temp: Double) -> String {
+        let temp = AppSettings.shared.getTemperature(temp)
+        return String(format: "%.0f", temp)
     }
     
 }

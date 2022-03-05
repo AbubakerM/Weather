@@ -41,6 +41,11 @@ class HomeVC: UIViewController {
             }
         }
     }
+    
+    @IBAction func settingsClicked(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
+        present(vc, animated: true, completion: nil)
+    }
 }
 
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
