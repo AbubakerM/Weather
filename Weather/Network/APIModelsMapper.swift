@@ -11,11 +11,13 @@ typealias MappingResult<T> = Swift.Result<T, Error>
 
 final class APIModelsMapper {
         
-    static func map<T: Codable>(_ data: Data) -> T? {
-        
-        let object = try? JSONDecoder().decode(T.self, from: data)
-        
-        return object
+    static func map<T: Decodable>(_ data: Data) -> T? {
+        do {
+            let object = try JSONDecoder().decode(T.self, from: data)
+            return object
+        } catch {
+            print(error)
+            return nil
+        }
     }
-    
 }

@@ -11,25 +11,23 @@ import XCTest
 class WeatherTests: XCTestCase {
     
     func testApiKey() {
-        XCTAssertTrue(Constants.API.Key == "e887e6e863e03c3868e2c96a90db90be")
+        let key = "e887e6e863e03c3868e2c96a90db90be"
+        XCTAssertTrue(Constants.API.Key == key, "API key is changed")
     }
     
     func testWeatherList() {
         let expectation = self.expectation(description: "Wait to load weather list")
         let params = mockParameters()
         let endpoint = APIEndPoint(path: .onecall, method: .get, parameters: params)
-        
-        var list: WeatherList?
-        
+                
         let service = WeatherService(endPoint: endpoint)
         service.updateList { weatherList in
             print("mapped Successfully")
-            list = weatherList
+            XCTAssertNotNil(weatherList, "weather list = nil")
             expectation.fulfill()
         }
         
         waitForExpectations(timeout: Constants.API.kTimeOutInterval, handler: nil)
-        XCTAssertNotNil(list)
     }
     
     
