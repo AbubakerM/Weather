@@ -51,9 +51,7 @@ class HomeViewModel {
         guard
             let lat = LocationManager.shared.getCurrentLocation()?.latitude.description ,
             let lon = LocationManager.shared.getCurrentLocation()?.longitude.description
-        else {
-            LocationManager.shared.askLocationAutorization()
-            return }
+        else { return }
         
         let params = [
             "lat":lat,

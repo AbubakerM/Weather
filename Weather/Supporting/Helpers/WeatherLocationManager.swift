@@ -12,7 +12,6 @@ class LocationManager: NSObject {
     override init() {
         super.init()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        askLocationAutorization()
     }
     
     func askLocationAutorization() {
@@ -26,6 +25,7 @@ class LocationManager: NSObject {
     }
     
     internal func getCurrentLocation() -> CLLocationCoordinate2D? {
+        askLocationAutorization()
         if let location = locationManager.location?.coordinate {
             locationManager.stopUpdatingLocation()
             return location
