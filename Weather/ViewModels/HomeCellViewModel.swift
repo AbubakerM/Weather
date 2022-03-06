@@ -16,12 +16,12 @@ class HomeCellViewModel {
     var humidity: String?
     
     init(object: Daily) {
-        date = getStringDate(object.dt ?? 0)
+        date = getStringDate(object.dt)
         
-        setMinMaxTemp(max: object.temp.max, min: object.temp.min)
-        
-        windSpeed = String(format: "%.2f", object.windSpeed ?? 0) + "m/s"
-        humidity = String(object.humidity ?? 0)+"%"
+        setMinMaxTemp(max: object.temp?.max ?? 0, min: object.temp?.min ?? 0)
+
+        windSpeed = String(format: "%.2f", object.windSpeed) + "m/s"
+        humidity = String(object.humidity)+"%"
     }
     
     private func getStringDate(_ milliseconds: Int) -> String {

@@ -7,6 +7,8 @@
 
 import Foundation
 
+typealias UpdateHendler = ((UpdateStatus) -> Void)
+
 class HomeViewModel {
         
     var object: WeatherList?
@@ -47,7 +49,7 @@ class HomeViewModel {
         return [maxTemp,minTemp,humidity,wind]
     }
     
-    func getWeatherList() {
+    func getWeatherList(completion: UpdateHendler? = nil) {
         guard
             let lat = LocationManager.shared.getCurrentLocation()?.latitude.description ,
             let lon = LocationManager.shared.getCurrentLocation()?.longitude.description
@@ -64,8 +66,18 @@ class HomeViewModel {
         let service = WeatherService(endPoint: endpoint)
         service.getWeatherList { [weak self] weatherList in
             guard let self = self else { return }
-            if let list = weatherList {
-                self.setData(listObject: list)
+            DispatchQueue.main.async {
+                if let list = weatherList {
+                    self.setData(listObject: list)
+                    RealmHelper.shared.insert(list)
+                    completion?(.success)
+                } else {
+                    //Check Offline Data
+                    if let offlineList: WeatherList = RealmHelper.shared.fetch() {
+                        self.setData(listObject: offlineList)
+                    }
+                    completion?(.failure)
+                }
             }
         }
     }

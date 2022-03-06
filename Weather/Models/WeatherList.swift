@@ -6,15 +6,18 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct WeatherList: Codable {
-    let lat, lon: Double?
-    let timezone: String?
-    let timezoneOffset: Int?
-    let current: Current
-    //let minutely: [Minutely]
-    //let hourly: [Current]
-    let daily: [Daily]
+@objcMembers class WeatherList: Object, Decodable {
+    var listPKey = "listPKey"
+    dynamic var lat: Double = 0
+    dynamic var lon: Double = 0
+    dynamic var timezone: String = ""
+    dynamic var timezoneOffset: Int = 0
+    dynamic var current: Current?
+    //dynamic var minutely: [Minutely]
+    //dynamic var hourly: [Current]
+    var daily = List<Daily>()
 
     enum CodingKeys: String, CodingKey {
         case lat, lon, timezone
@@ -24,21 +27,30 @@ struct WeatherList: Codable {
         //case hourly
         case daily
     }
+    
+    override class func primaryKey() -> String? {
+        return "listPKey"
+    }
+    
 }
 
+
 // MARK: - Current
-struct Current: Codable {
-    let dt: Int?
-    let sunrise, sunset: Int?
-    let temp, feelsLike: Double?
-    let pressure, humidity: Int?
-    let dewPoint, uvi: Double?
-    let clouds, visibility: Int?
-    let windSpeed: Double?
-    let windDeg: Int?
-    let weather: [Weather]
-    let windGust: Double?
-    let pop: Int?
+@objcMembers class Current: Object, Codable {
+    dynamic var dt: Int = 0
+    dynamic var sunrise: Int = 0
+    dynamic var sunset: Int = 0
+    dynamic var temp: Double = 0
+    dynamic var feelsLike: Double = 0
+    dynamic var pressure: Int = 0
+    dynamic var humidity: Int = 0
+    dynamic var dewPoint: Double = 0
+    dynamic var uvi: Double = 0
+    dynamic var visibility: Int = 0
+    dynamic var clouds: Int = 0
+    dynamic var windSpeed: Double = 0
+    dynamic var windDeg: Int = 0
+    var weather = List<Weather>()
 
     enum CodingKeys: String, CodingKey {
         case dt, sunrise, sunset, temp
@@ -49,62 +61,43 @@ struct Current: Codable {
         case windSpeed = "wind_speed"
         case windDeg = "wind_deg"
         case weather
-        case windGust = "wind_gust"
-        case pop
     }
 }
 
 // MARK: - Weather
-struct Weather: Codable {
-    let id: Int?
-    let main: Main
-    let weatherDescription: Description
-    let icon: Icon
+@objcMembers class Weather: Object, Codable {
+    dynamic var id: Int = 0
+    dynamic var main: String = ""
+    dynamic var weatherDescription: String = ""
+    dynamic var icon: String = ""
 
     enum CodingKeys: String, CodingKey {
         case id, main
         case weatherDescription = "description"
         case icon
     }
-}
-
-enum Icon: String, Codable {
-    case the01D = "01d"
-    case the01N = "01n"
-    case the02D = "02d"
-    case the03D = "03d"
-    case the03N = "03n"
-    case the04D = "04d"
-    case the04N = "04n"
-}
-
-enum Main: String, Codable {
-    case clear = "Clear"
-    case clouds = "Clouds"
-}
-
-enum Description: String, Codable {
-    case brokenClouds = "broken clouds"
-    case clearSky = "clear sky"
-    case fewClouds = "few clouds"
-    case overcastClouds = "overcast clouds"
-    case scatteredClouds = "scattered clouds"
+    
 }
 
 // MARK: - Daily
-struct Daily: Codable {
-    let dt, sunrise, sunset, moonrise: Int?
-    let moonset: Int?
-    let moonPhase: Double?
-    let temp: Temp
-    let feelsLike: FeelsLike
-    let pressure, humidity: Int?
-    let dewPoint, windSpeed: Double?
-    let windDeg: Int?
-    let windGust: Double?
-    let weather: [Weather]
-    let clouds, pop: Int?
-    let uvi: Double?
+@objcMembers class Daily: Object, Codable {
+    dynamic var dt: Int = 0
+    dynamic var sunrise: Int = 0
+    dynamic var sunset: Int = 0
+    dynamic var moonrise: Int = 0
+    dynamic var moonset: Int = 0
+    dynamic var moonPhase: Double = 0
+    dynamic var temp: Temp?
+    dynamic var feelsLike: FeelsLike?
+    dynamic var pressure: Int = 0
+    dynamic var humidity: Int = 0
+    dynamic var dewPoint: Double = 0
+    dynamic var windSpeed: Double = 0
+    dynamic var windDeg: Int = 0
+    dynamic var windGust: Double = 0
+    var weather = List<Weather>()
+    dynamic var clouds: Int = 0
+    dynamic var uvi: Double = 0
 
     enum CodingKeys: String, CodingKey {
         case dt, sunrise, sunset, moonrise, moonset
@@ -116,23 +109,38 @@ struct Daily: Codable {
         case windSpeed = "wind_speed"
         case windDeg = "wind_deg"
         case windGust = "wind_gust"
-        case weather, clouds, pop, uvi
+        case weather, clouds, uvi
     }
+    
 }
 
 // MARK: - FeelsLike
-struct FeelsLike: Codable {
-    let day, night, eve, morn: Double?
+@objcMembers class FeelsLike: Object, Codable {
+    dynamic var day: Double = 0
+    dynamic var night: Double = 0
+    dynamic var eve: Double = 0
+    dynamic var morn: Double = 0
+    
 }
 
 // MARK: - Temp
-struct Temp: Codable {
-    let day, min, max, night: Double?
-    let eve, morn: Double?
+@objcMembers class Temp: Object, Codable {
+    dynamic var day: Double = 0
+    dynamic var min: Double = 0
+    dynamic var max: Double = 0
+    dynamic var night: Double = 0
+    dynamic var morn: Double = 0
+    dynamic var eve: Double = 0
+    
 }
 
 // MARK: - Minutely
-struct Minutely: Codable {
-    let dt, precipitation: Int?
+@objcMembers class Minutely: Object, Codable {
+    dynamic var dt: Int = 0
+    dynamic var precipitation: Int = 0
+    
 }
+
+
+
 

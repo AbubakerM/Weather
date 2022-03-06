@@ -14,6 +14,11 @@ enum HttpMethod : String {
     case delete  = "Delete"
 }
 
+enum UpdateStatus {
+  case success
+  case failure
+}
+
 extension Constants.API {
     enum Path: String {
         case onecall = "/data/2.5/onecall"
